@@ -3,7 +3,7 @@
 Summary:	PHP-FPM Status template for Cacti
 Name:		cacti-template-%{template}
 Version:	0.1
-Release:	0.1
+Release:	1
 License:	GPL v2
 Group:		Applications/WWW
 Source0:	http://forums.cacti.net/download/file.php?id=24260&/cacti-php-fpm.tar.gz

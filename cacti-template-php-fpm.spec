@@ -1,17 +1,19 @@
 %define		template	php-fpm
 %include	/usr/lib/rpm/macros.perl
-Summary:	PHP-FPM Status template for Cacti
+Summary:	PHP-FPM Pool Status template for Cacti
 Name:		cacti-template-%{template}
-Version:	0.3
+Version:	0.4
 Release:	1
 License:	GPL v2
 Group:		Applications/WWW
 Source0:	https://github.com/glensc/cacti-template-php-fpm/archive/%{version}.tar.gz
-# Source0-md5:	5af0510dd8fcd917226c31aed2d14afc
+# Source0-md5:	0f36fb8eefa60395a858f021b71260a5
 URL:		https://github.com/glensc/cacti-template-php-fpm
 BuildRequires:	rpm-perlprov >= 4.1-13
-BuildRequires:	rpmbuild(macros) >= 1.554
-Requires:	cacti
+BuildRequires:	rpmbuild(macros) >= 1.654
+Requires:	cacti >= 0.8.8a
+Suggests:	perl-FCGI-Client
+Suggests:	perl-libwww
 BuildArch:	noarch
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
@@ -20,20 +22,19 @@ BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 %define		scriptsdir		%{cactidir}/scripts
 
 %description
-PHP-FPM Status template for Cacti.
+PHP-FPM Pool Status template for Cacti.
 
 %prep
-%setup -qc
-mv cacti-template-php-fpm-*/* .
+%setup -q
 
 %install
 rm -rf $RPM_BUILD_ROOT
 install -d $RPM_BUILD_ROOT{%{resourcedir},%{scriptsdir}}
 install -p get_php_fpm_status.pl $RPM_BUILD_ROOT%{scriptsdir}
-cp -p cacti_graph_template_php-fpm_statistic.xml $RPM_BUILD_ROOT%{resourcedir}
+cp -p cacti_graph_template_php-fpm_pool_status.xml $RPM_BUILD_ROOT%{resourcedir}
 
 %post
-%cacti_import_template %{resourcedir}/cacti_graph_template_php-fpm_statistic.xml
+%cacti_import_template %{resourcedir}/cacti_graph_template_php-fpm_pool_status.xml
 
 %clean
 rm -rf $RPM_BUILD_ROOT

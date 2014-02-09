@@ -3,7 +3,7 @@
 Summary:	PHP-FPM Pool Status template for Cacti
 Name:		cacti-template-%{template}
 Version:	0.4
-Release:	1
+Release:	2
 License:	GPL v2
 Group:		Applications/WWW
 Source0:	https://github.com/glensc/cacti-template-php-fpm/archive/%{version}.tar.gz
@@ -13,6 +13,7 @@ BuildRequires:	rpm-perlprov >= 4.1-13
 BuildRequires:	rpmbuild(macros) >= 1.654
 Requires:	cacti >= 0.8.8a
 Suggests:	perl-FCGI-Client
+Suggests:	perl-Moose
 Suggests:	perl-libwww
 BuildArch:	noarch
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)

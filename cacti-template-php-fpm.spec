@@ -1,5 +1,4 @@
 %define		template	php-fpm
-%include	/usr/lib/rpm/macros.perl
 Summary:	PHP-FPM Pool Status template for Cacti
 Name:		cacti-template-%{template}
 Version:	0.6.0
